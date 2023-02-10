@@ -1,6 +1,7 @@
 import "./App.css";
 import NewExpense from "./components/NewExpense/NewExpense";
 import Expenses from "./components/Expenses/Expenses";
+import Form from "./components/form";
 
 function App() {
   const expenses = [
@@ -25,12 +26,21 @@ function App() {
       date : new Date(2023, 1, 3)
     },
   ]
+  const getData = (data) => {
+    console.log(data); 
+  }
+  const addExpenseHandler = expense => {
+    console.log("In app js");
+    console.log(expense);
+  }
   return(
     <div>
-      <NewExpense></NewExpense>
+      <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses
       exp={expenses}>
       </Expenses>
+      <Form
+      onSubmit={getData}/>
     </div>
   )
 }
